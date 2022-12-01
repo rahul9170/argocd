@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: example-deploy
+  name: another-deploy
   labels:
-    app: example-app
+    app: another-app
   annotations:
 spec:
   selector:
     matchLabels:
-      app: example-app
+      app: another-app
   replicas: 2
   strategy:
     type: RollingUpdate
@@ -18,10 +18,10 @@ spec:
   template:
     metadata:
       labels:
-        app: example-app
+        app: another-app
     spec:
       containers:
-      - name: example-app
+      - name: another-app
         image: aimvector/python:1.0.0
         imagePullPolicy: Always
         ports:
@@ -44,4 +44,4 @@ spec:
           secretName: mysecret
       - name: config-volume
         configMap:
-          name: example-config #name of our configmap object
+          name: another-config #name of our configmap object
